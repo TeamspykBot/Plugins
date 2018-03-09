@@ -64,7 +64,7 @@ class AFKSwitcherPlugin(PluginBase):
         @return None
         """
         # only move client back if they are still muted
-        if bool(int(self.bot_instance.get_client_value(clid, "client_output_muted"))):
+        if bool(int(self.bot_instance.get_client_value(clid, "client_output_muted", 0))):
             self.bot_instance.switch_client_to_channel(clid, self.afk_cid)
             # save old channel for later unafk use
             self.bot_instance.set_client_value(clid, AFKSwitcherPlugin.CLIENT_VAL_OLD_CHANNEL, cid)
